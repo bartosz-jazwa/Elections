@@ -18,6 +18,8 @@ import org.mapstruct.factory.Mappers;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ElectionsService {
@@ -49,5 +51,17 @@ public class ElectionsService {
         candidateElectionRepository.deleteById(candidateElectionId);
         return electionRepository.findByIdWithCandidates(electionId)
                 .map(electionsMapper::entityToResponseWithCandidates).orElse(null);
+    }
+
+    public List<ElectionWithCandidatesResponse> getAllElectionsWithCandidates() {
+        return electionRepository.findAll().stream()
+                .map(electionsMapper::entityToResponseWithCandidates)
+                .toList();
+    }
+
+    public ElectionWithCandidatesResponse getElectionWithCandidates(Long electionId) {
+        return electionRepository.findByIdWithCandidates(electionId)
+                .map(electionsMapper::entityToResponseWithCandidates)
+                .orElse(null);
     }
 }

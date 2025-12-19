@@ -6,14 +6,17 @@ import com.onwelo.elections.dto.NewElectionRequest;
 import com.onwelo.elections.dto.NewElectionResponse;
 import com.onwelo.elections.service.ElectionsService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/elections")
@@ -34,5 +37,15 @@ class ElectionsController {
     @PatchMapping
     ElectionWithCandidatesResponse removeCandidateFromElection(@RequestParam Long electionId, @RequestParam Long candidateId) {
         return electionsService.removeCandidateFromElection(electionId, candidateId);
+    }
+
+    @GetMapping
+    List<ElectionWithCandidatesResponse> getAllElections() {
+        return electionsService.getAllElectionsWithCandidates();
+    }
+
+    @GetMapping("/{electionId}")
+    ElectionWithCandidatesResponse getElectionById(@PathVariable Long electionId) {
+        return electionsService.getElectionWithCandidates(electionId);
     }
 }
