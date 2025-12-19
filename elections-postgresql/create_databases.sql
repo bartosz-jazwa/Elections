@@ -1,4 +1,4 @@
-CREATE DATABASE suda_sudian
+CREATE DATABASE elections
     WITH
     OWNER = postgres
     ENCODING = 'UTF8'

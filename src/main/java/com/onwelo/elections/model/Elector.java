@@ -1,4 +1,4 @@
-package org.elections.model;
+package com.onwelo.elections.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -29,7 +29,9 @@ public class Elector {
     @Column(name = "last_name")
     private String lastName;
 
-    // Relacja zwrotna do tabeli łączącej
+    @Column(name = "document_number")
+    private String documentNumber;
+
     @OneToMany(mappedBy = "elector", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ElectorElection> electorElections = new ArrayList<>();
 }

@@ -1,4 +1,4 @@
-package org.elections;
+package com.onwelo.elections;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

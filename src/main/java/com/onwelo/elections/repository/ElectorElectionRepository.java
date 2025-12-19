@@ -1,7 +1,7 @@
-package org.elections.repository;
+package com.onwelo.elections.repository;
 
-import org.elections.model.ElectorElection;
-import org.elections.model.ElectorElectionId;
+import com.onwelo.elections.model.ElectorElection;
+import com.onwelo.elections.model.ElectorElectionId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,5 +1,6 @@
-package org.elections.model;
+package com.onwelo.elections.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,15 +24,18 @@ public class Election {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "title")
     private String title;
-    @Column(name = "date")
+
+    @Column(name = "election_date")
     private LocalDate date;
-    // Relacja do kandydatów (przez tabelę łączącą)
+
     @OneToMany(mappedBy = "election", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<CandidateElection> candidateElections = new ArrayList<>();
 
-    // Relacja do wyborców (przez tabelę łączącą)
     @OneToMany(mappedBy = "election", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
     private List<ElectorElection> electorElections = new ArrayList<>();
 }

@@ -1,7 +1,9 @@
 package com.onwelo.elections.dto;
 
-public record AddElectorResponse(
+public record ElectorResponse(
+        Long id,
         String firstName,
-        String lastName
+        String lastName,
+        String documentNumber
 ) {
 }

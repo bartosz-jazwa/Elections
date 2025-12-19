@@ -1,6 +1,6 @@
 package com.onwelo.elections.dto;
 
-public record AddElectorRequest(
+public record NewElectorRequest(
         String firstName,
         String lastName,
         String documentNumber

@@ -1,4 +1,11 @@
 package com.onwelo.elections.dto;
 
-public record ElectionWithCandidatesResponse() {
+import java.util.List;
+
+public record ElectionWithCandidatesResponse(
+        Long id,
+        String title,
+        String date,
+        List<CandidateResponse> candidates
+) {
 }

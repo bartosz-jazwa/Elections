@@ -1,8 +1,8 @@
-package org.elections.repository;
+package com.onwelo.elections.repository;
 
-import org.elections.model.Candidate;
+import com.onwelo.elections.model.Candidate;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CandidateRepository extends JpaRepository<Candidate, Integer> {}
+public interface CandidateRepository extends JpaRepository<Candidate, Long> {}

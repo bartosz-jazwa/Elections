@@ -1,4 +1,4 @@
-package org.elections;
+package com.onwelo.elections;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

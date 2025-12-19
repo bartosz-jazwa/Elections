@@ -1,4 +1,9 @@
 package com.onwelo.elections.dto;
 
-public record NewElectionRequest() {
+import java.time.LocalDate;
+
+public record NewElectionRequest(
+        String title,
+        LocalDate date
+) {
 }

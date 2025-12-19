@@ -1,4 +1,4 @@
-package org.elections.model;
+package com.onwelo.elections.model;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
