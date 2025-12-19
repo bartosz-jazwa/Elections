@@ -2,12 +2,12 @@ package com.onwelo.elections.dto;
 
 import org.springframework.lang.NonNull;
 
-public record AddCandidateToElectionRequest(
+public record VoteRequest(
         @NonNull
         Long electionId,
         @NonNull
-        String candidateFirstName,
+        Long candidateId,
         @NonNull
-        String candidateLastName
+        Long electorId
 ) {
 }

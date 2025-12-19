@@ -26,9 +26,16 @@ public class ElectorElection {
     @JsonBackReference
     private Election election;
 
-    @Column(name = "candidate_voted")
-    private Boolean candidateVoted;
+    @Column(name = "elector_voted")
+    private Boolean electorVoted;
 
-    @Column(name = "candidate_blocked")
-    private Boolean candidateBlocked;
+    @Column(name = "elector_blocked")
+    private Boolean electorBlocked;
+
+    public ElectorElection(Elector elector, Election election) {
+        this.elector = elector;
+        this.election = election;
+        this.electorVoted = false;
+        this.electorBlocked = false;
+    }
 }

@@ -31,7 +31,7 @@ create table electors_elections
 (
     elector_id        BIGINT NOT NULL REFERENCES electors (id) ON DELETE CASCADE,
     election_id       BIGINT NOT NULL REFERENCES elections (id) ON DELETE CASCADE,
-    candidate_voted   BOOLEAN default false,
-    candidate_blocked BOOLEAN default false,
+    elector_voted   BOOLEAN default false,
+    elector_blocked BOOLEAN default false,
     PRIMARY KEY (elector_id, election_id)
 );

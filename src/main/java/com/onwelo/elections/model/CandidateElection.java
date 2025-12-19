@@ -32,5 +32,6 @@ public class CandidateElection {
     public CandidateElection(Candidate candidate, Election election) {
         this.candidate = candidate;
         this.election = election;
+        this.votes = 0L;
     }
 }

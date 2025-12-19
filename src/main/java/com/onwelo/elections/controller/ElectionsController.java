@@ -1,11 +1,15 @@
 package com.onwelo.elections.controller;
 
 import com.onwelo.elections.dto.AddCandidateToElectionRequest;
+import com.onwelo.elections.dto.CandidateWithVotesResponse;
 import com.onwelo.elections.dto.ElectionWithCandidatesResponse;
 import com.onwelo.elections.dto.NewElectionRequest;
 import com.onwelo.elections.dto.NewElectionResponse;
+import com.onwelo.elections.dto.VoteRequest;
 import com.onwelo.elections.service.ElectionsService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +39,7 @@ class ElectionsController {
     }
 
     @PatchMapping
-    ElectionWithCandidatesResponse removeCandidateFromElection(@RequestParam Long electionId, @RequestParam Long candidateId) {
+    ElectionWithCandidatesResponse removeCandidateFromElection(@RequestParam @NonNull Long electionId, @RequestParam @NonNull Long candidateId) {
         return electionsService.removeCandidateFromElection(electionId, candidateId);
     }
 
@@ -45,7 +49,12 @@ class ElectionsController {
     }
 
     @GetMapping("/{electionId}")
-    ElectionWithCandidatesResponse getElectionById(@PathVariable Long electionId) {
-        return electionsService.getElectionWithCandidates(electionId);
+    ResponseEntity<ElectionWithCandidatesResponse> getElectionById(@PathVariable @NonNull Long electionId) {
+        return ResponseEntity.of(electionsService.getElectionWithCandidates(electionId));
+    }
+
+    @PutMapping("/vote")
+    List<CandidateWithVotesResponse> vote(@RequestBody VoteRequest request) {
+        return electionsService.vote(request);
     }
 }
