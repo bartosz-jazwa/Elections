@@ -1,0 +1,11 @@
+########################################################################################################################
+#
+# Image configuration for either 'docker build' or 'docker compose' build step:
+# 1. Used to set up the image.
+# 2. Dedicated to daily build environment.
+#
+########################################################################################################################
+
+FROM postgres:16.9
+COPY create_databases.sql /docker-entrypoint-initdb.d
+
